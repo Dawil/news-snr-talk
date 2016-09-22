@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Shortening Slow News Days</title>
+
+<meta name="description" content="Shortening Slow News Days">    
+
+  <meta name="author" content="David Wilcox" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+
+<!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + 
+    '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section>
+<h1>Shortening Slow News Days</h1>
+<h3>David Wilcox</h3>
+<p>
+<h4></h4>
+</p>
+</section>  
+
+
+<section id="there-are-fast-news-daysweeks" class="level2">
+<h2>There are fast news days/weeks</h2>
+<ul>
+<li>July 14, 2016 - Terrorist attack in Nice, France</li>
+<li>July 15, 2016 - a coup attempt in Turkey</li>
+</ul>
+<p>News outlets everywhere are having a field day.</p>
+</section>
+<section id="there-are-slow-news-daysweeks" class="level2">
+<h2>There are slow news days/weeks</h2>
+<figure>
+<img src="images/slow-news-day.png" alt="Nothing else going on" /><figcaption>Nothing else going on</figcaption>
+</figure>
+</section>
+<section id="the-problem" class="level2">
+<h2>The Problem</h2>
+<ul>
+<li>I only want my news source to tell me important things</li>
+<li>My news source wants as much of my attention as it can get (for ad revenue)</li>
+<li>I'm either paying too much attention on slow news days, or too little attention on fast news days.</li>
+</ul>
+</section>
+<section id="the-solution" class="level2">
+<h2>The Solution</h2>
+<p>Shorten slow news days</p>
+<figure>
+<img src="images/reddit-before-after.png" alt="Remove the noise" /><figcaption>Remove the noise</figcaption>
+</figure>
+</section>
+<section id="how" class="level2">
+<h2>How?</h2>
+<ul>
+<li>Take top four articles on reddit?
+<ul>
+<li>Reddit messes with order based on time</li>
+<li>Is too quiet on fast news days</li>
+</ul></li>
+<li>Need to be context aware</li>
+</ul>
+<p>We can compare points from one day to the next</p>
+</section>
+<section id="how-pt2" class="level2">
+<h2>How? pt2</h2>
+<ul>
+<li>Record standard deviation of articles per subreddit</li>
+<li>Set threshold, e.g. 1 standard deviation = top 33%</li>
+<li>On fast news days show many results</li>
+<li>On slow news days show fewresults</li>
+</ul>
+<figure>
+<img src="images/standard-deviation.png" alt="Remove the noise" /><figcaption>Remove the noise</figcaption>
+</figure>
+</section>
+<section id="how-pt3" class="level2">
+<h2>How? pt3</h2>
+<ol type="1">
+<li><a href="http://reddit.com/r/worldnews.json">http://reddit.com/r/worldnews.json</a> is a machine friendly version of the front page</li>
+<li>Write some python to fetch the JSON file for each subreddit</li>
+<li>Record each article and its points</li>
+<li>Re-calculate standard deviation per subreddit</li>
+<li>Email articles above threshold (top 33%) to myself</li>
+<li>Create email filters to organise articles into folders and avoid flooding my inbox</li>
+<li>Run the script regularly (once a day/week)</li>
+</ol>
+</section>
+<section id="does-it-work" class="level2">
+<h2>Does it work?</h2>
+<figure>
+<img src="images/inbox.png" alt="Yeah, I guess" /><figcaption>Yeah, I guess</figcaption>
+</figure>
+</section>
+<section id="conclusion" class="level2">
+<h2>Conclusion</h2>
+<ul>
+<li>Prototype wasn't too complicated</li>
+<li>Although there were less articles, it was still a lot</li>
+<li>Took about 10 minutes for 200 emails to reach my inbox &gt;.&lt;</li>
+<li>Consuming articles from my gmail inbox on my phone was nicer</li>
+<li>Running script daily isn't fun (requires laptop or server, which makes it clunky or more complicated)</li>
+<li>I haven't made a habit of using it :(</li>
+</ul>
+</section>
+<section id="questions" class="level2">
+<h2>Questions?</h2>
+</section>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: false,
+
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'sky', 
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'default',
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+  });
+
+</script>
+
+</body>
+</html>
