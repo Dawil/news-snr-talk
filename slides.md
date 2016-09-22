@@ -21,6 +21,8 @@ The Problem
 * My news source wants as much of my attention as it can get (for ad revenue)
 * I'm either paying too much attention on slow news days, or too little attention on fast news days.
 
+Also I waste too much time on reddit. The less time spent there the better.
+
 The Solution
 ------------
 
@@ -71,6 +73,7 @@ Conclusion
 * Although there were less articles, it was still a lot
 * Took about 10 minutes for 200 emails to reach my inbox >.<
 * Consuming articles from my gmail inbox on my phone was nicer
+* Far less time spent on reddit!
 * Running script daily isn't fun (requires laptop or server, which makes it clunky or more complicated)
 * I haven't made a habit of using it :(
 
