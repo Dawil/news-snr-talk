@@ -1,3 +1,4 @@
+# https://gist.github.com/gwijthoff/7035617
 slides:
 	pandoc \
 	 	-t html5 \
