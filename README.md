@@ -1,4 +1,4 @@
-Repo for slides for News SNR talk.
+Repo for slides for News SNR talk. View [here](http://blog.dagwil.me/news-snr-talk/slides.html).
 
 Summary
 -------
